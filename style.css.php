@@ -20,6 +20,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
+// memo e6e6e6
 
 /**
  *		\file       htdocs/theme/md-ux/style.css.php
@@ -104,7 +105,7 @@ $borderwith=2;
 
 // Case of option always editable
 if (! isset($conf->global->THEME_ELDY_BACKBODY)) $conf->global->THEME_ELDY_BACKBODY=$colorbackbody;
-if (! isset($conf->global->THEME_ELDY_TOPMENU_BACK1)) $conf->global->THEME_ELDY_TOPMENU_BACK1='90,50,120';
+if (! isset($conf->global->THEME_ELDY_TOPMENU_BACK1)) $conf->global->THEME_ELDY_TOPMENU_BACK1='230,230,230';
 if (! isset($conf->global->THEME_ELDY_BACKTITLE1)) $conf->global->THEME_ELDY_BACKTITLE1=$colorbacktitle1;
 if (! isset($conf->global->THEME_ELDY_USE_HOVER)) $conf->global->THEME_ELDY_USE_HOVER=='238,246,252';
 if (! isset($conf->global->THEME_ELDY_TEXTTITLENOTAB)) $conf->global->THEME_ELDY_TEXTTITLENOTAB=$colortexttitlenotab;
@@ -157,13 +158,6 @@ if (! empty($user->conf->THEME_ELDY_ENABLE_PERSONALIZED))
 
 if (empty($colortopbordertitle1)) $colortopbordertitle1=$colorbackhmenu1;
 
-
-// Set text color to black or white
-$colorbackhmenu1=join(',',colorStringToArray($colorbackhmenu1));    // Normalize value to 'x,y,z'
-$tmppart=explode(',',$colorbackhmenu1);
-$tmpval=(! empty($tmppart[0]) ? $tmppart[0] : 0)+(! empty($tmppart[1]) ? $tmppart[1] : 0)+(! empty($tmppart[2]) ? $tmppart[2] : 0);
-if ($tmpval <= 460) $colortextbackhmenu='FFFFFF';
-else $colortextbackhmenu='000000';
 
 $colorbackvmenu1=join(',',colorStringToArray($colorbackvmenu1));    // Normalize value to 'x,y,z'
 $tmppart=explode(',',$colorbackvmenu1);
@@ -219,7 +213,6 @@ print '$colortexttitlenotab='.$colortexttitlenotab."\n";
 print '$colortexttitle='.$colortexttitle."\n";
 print '$colortext='.$colortext."\n";
 print '$colortextlink='.$colortextlink."\n";
-print '$colortextbackhmenu='.$colortextbackhmenu."\n";
 print '$colortextbackvmenu='.$colortextbackvmenu."\n";
 print 'dol_hide_topmenu='.$dol_hide_topmenu."\n";
 print 'dol_hide_leftmenu='.$dol_hide_leftmenu."\n";
@@ -1154,7 +1147,7 @@ div.tmenudisabled, a.tmenudisabled {
 	opacity: 0.6;
 }
 a.tmenudisabled:link, a.tmenudisabled:visited, a.tmenudisabled:hover, a.tmenudisabled:active, a.tmenu:link, a.tmenu:visited, a.tmenu:hover, a.tmenu:active, a.tmenusel:link, a.tmenusel:visited, a.tmenusel:hover, a.tmenusel:active {
- font-weight: normal;white-space: nowrap;color: #<?php echo $colortextbackhmenu; ?>;text-decoration: none !important;text-overflow: ellipsis;
+ font-weight: normal;white-space: nowrap;color: #000;text-decoration: none !important;text-overflow: ellipsis;
 }
 
 a.tmenudisabled:link, a.tmenudisabled:visited, a.tmenudisabled:hover, a.tmenudisabled:active {
@@ -4536,7 +4529,7 @@ img.demothumb {
     	white-space: nowrap;
   		overflow: hidden;
   		text-overflow: ellipsis;
-  		color: #<?php echo $colortextbackhmenu; ?>;
+  		color: #000;
 	}
 	.mainmenuaspan {
     	/*display: none;*/

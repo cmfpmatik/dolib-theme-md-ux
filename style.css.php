@@ -46,6 +46,7 @@ require_once DOL_DOCUMENT_ROOT . '/core/lib/functions2.lib.php';
 // Load user to have $user->conf loaded (not done into main because of NOLOGIN constant defined)
 if (empty($user->id) && !empty($_SESSION['dol_login'])) $user->fetch('', $_SESSION['dol_login']);
 
+// Load new boxes
 
 // Define css type
 header('Content-type: text/css');
@@ -793,7 +794,7 @@ min-width: 10px;
 /* ============================================================================== */
 
 #id-container {margin-top: 0px;margin-bottom: 0px;margin-left: 90px;display: block;}
-#id-top {}
+#id-top {width: 90px;display: block;overflow: hidden;height: 100%;}
 #id-left {height: 100%;position: fixed;width: 185px;display: block;overflow-y: auto;overflow-x: hidden;background: #fff;padding-top: 50px;border-right: 1px solid rgba(0,0,0,0.3);}
 #id-right {width: 100%;padding-bottom: 10px;padding-top: 12px;display: block;}
 
@@ -836,7 +837,7 @@ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 -webkit-overflow-scrolling: touch;
 }
 .side-nav-vert {
-position: fixed;z-index: 150;
+position: fixed;z-index: 150;height:100%;
 }
 
 /* For smartphone (testmenuhider is on) */
@@ -1145,7 +1146,7 @@ border-<?php print $left; ?>: 0px;
 border-<?php print $right; ?>: 0px;
 padding: 0px 0px 0px 0px;	/* t r b l */
 margin: 0px 0px 0px 0px;	/* t r b l */
-font-size: 13px;
+font-size: 14px;
 font-weight: normal;
 color: #000000;
 text-decoration: none;text-overflow: ellipsis;
@@ -1173,7 +1174,6 @@ margin: 0px 0px 0px 0px;
 
 
 ul.tmenu {	/* t r b l */
-width: 85px;
 padding: 0px 0px 0px 0px;
 margin: 0px 0px 0px 0px;
 list-style: none;
@@ -1181,7 +1181,7 @@ display: block;
 height: auto;
 min-height: 100%;
 }
-ul.tmenu li {width: 85px;height:60px}
+ul.tmenu li {width: 100%;height:60px}
 li.tmenu, li.tmenusel {
 <?php print $minwidthtmenu ? 'min-width: ' . $minwidthtmenu . 'px;' : ''; ?>
 text-align: center;
@@ -1217,18 +1217,6 @@ opacity: .50; /* show only a slight shadow */
 .tmenuend .tmenuleft { width: 0px; }
 .tmenuend { display: none; }
 
-div.tmenuleft
-{
-float: <?php print $left; ?>;
-margin-top: 0px;
-<?php if (empty($conf->dol_optimize_smallscreen)) { ?>
-	width: 5px;
-	<?php if (!$disableimages) { ?>
-		height: <?php print $heightmenu + 4; ?>px;
-	<?php } ?>
-	/* background: url(<?php echo dol_buildpath($path . '/theme/' . $theme . '/img/menutab-r.png', 1); ?>) 0 -6px no-repeat; */
-<?php } ?>
-}
 div.tmenucenter
 {
 padding-left: 0px;
@@ -1247,15 +1235,7 @@ padding-bottom: 2px;
 overflow: hidden;
 text-overflow: ellipsis;
 }
-.mainmenuaspan
-{
-<?php if ($disableimages) { ?>
-	padding-<?php print $left; ?>: 4px;
-	padding-<?php print $right; ?>: 2px;
-<?php } else { ?>
-	padding-<?php print $right; ?>: 4px;
-<?php } ?>
-}
+
 
 div.mainmenu {
 position : relative;
@@ -1506,7 +1486,7 @@ max-height: 90px;
 }
 
 div.login_block {
-border-right: 1px solid rgba(0,0,0,0.3);
+
 border-left: 1px solid rgba(0,0,0,0.3);
 padding-top: 5px;
 <?php print $left; ?>: 90px;
@@ -4522,9 +4502,6 @@ min-width: 32px;
 div.mainmenu {
 min-width: auto;
 }
-div.tmenuleft {
-display: none;
-}
 }
 /* rule to reduce top menu - 2nd reduction */
 @media only screen and (max-width: <?php echo round($nbtopmenuentries * $fontsize * 4.5, 0) + 200; ?>px)
@@ -4569,6 +4546,7 @@ select {
 width: 98%;
 min-width: 0 !important;
 }
+.fiche select {width: inherit;}
 div.divphotoref {
 padding-right: 5px;
 }
@@ -4613,7 +4591,7 @@ max-width : 76%;
 }
 #blockvmenusearch input.button {width: 50px !important;margin: 0;}
 
-#mainmenutd_accountancy .mainmenuaspan, #mainmenua_bank .mainmenuaspan, #mainmenua_products .mainmenuaspan {display: none;}
+#mainmenutd_accountancy .mainmenuaspan, #mainmenua_bank .mainmenuaspan, #mainmenua_products .mainmenuaspan {display: none!important;}
 #mainmenua_accountancy::after {content: 'Financier';}
 #mainmenua_bank::after {content: 'Bancaires';}
 #mainmenua_products::after {content: 'Marchandises';}

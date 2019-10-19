@@ -5,7 +5,7 @@
  * Copyright (C) 2011		Philippe Grand			<philippe.grand@atoo-net.com>
  * Copyright (C) 2012		Juanjo Menent			<jmenent@2byte.es>
  * Copyright (C) 2015		Alexandre Spangaro	<aspangaro.dolibarr@gmail.com>
- * Copyright (C) 2017-2018	Oarces DEV				<dev@oarces.com>
+ * Copyright (C) 2017-2019	Oarces DEV				<dev@oarces.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -42,6 +42,9 @@ session_cache_limiter(FALSE);
 
 require_once '../../main.inc.php';
 require_once DOL_DOCUMENT_ROOT . '/core/lib/functions2.lib.php';
+//$morejs=array("/js/mdux.js");
+//llxHeader('','mdux','','','','',$morejs,'',0,0);
+
 
 // Load user to have $user->conf loaded (not done into main because of NOLOGIN constant defined)
 if (empty($user->id) && !empty($_SESSION['dol_login'])) $user->fetch('', $_SESSION['dol_login']);
@@ -93,7 +96,7 @@ $colortopbordertitle1	 = '';	 // top border of tables-lists title. not defined =
 $colorbacktitle1		 = '230,230,230';   // title of tables-lists
 $colorbacktabcard1		 = '255,255,255';  // card
 $colorbacktabactive		 = '234,234,234';
-$colorbacklineimpair1	 = '255,255,255'; // line impair
+$colorbacklineimpair1	 = '240,240,240'; // line impair
 $colorbacklineimpair2	 = '255,255,255'; // line impair
 $colorbacklinepair1		 = '250,250,250'; // line pair
 $colorbacklinepair2		 = '248,248,248'; // line pair
@@ -134,7 +137,7 @@ if (empty($conf->global->THEME_ELDY_ENABLE_PERSONALIZED)) {
 	$conf->global->THEME_ELDY_LINEPAIRHOVER	 = '238,246,252';
 	$conf->global->THEME_ELDY_USE_HOVER		 = '238,246,252';
 	$conf->global->THEME_ELDY_TEXT			 = '0,0,0';
-	$conf->global->THEME_ELDY_FONT_SIZE1	 = '13';
+	$conf->global->THEME_ELDY_FONT_SIZE1	 = '0.8em';
 	$conf->global->THEME_ELDY_FONT_SIZE2	 = '11';
 }
 
@@ -156,7 +159,9 @@ $colortexttitlenotab	 = empty($user->conf->THEME_ELDY_ENABLE_PERSONALIZED) ? (em
 $colortexttitle			 = empty($user->conf->THEME_ELDY_ENABLE_PERSONALIZED) ? (empty($conf->global->THEME_ELDY_TEXTTITLE) ? $colortext : $conf->global->THEME_ELDY_TEXTTITLE) : (empty($user->conf->THEME_ELDY_TEXTTITLE) ? $colortexttitle : $user->conf->THEME_ELDY_TEXTTITLE);
 $colortext				 = empty($user->conf->THEME_ELDY_ENABLE_PERSONALIZED) ? (empty($conf->global->THEME_ELDY_TEXT) ? $colortext : $conf->global->THEME_ELDY_TEXT) : (empty($user->conf->THEME_ELDY_TEXT) ? $colortext : $user->conf->THEME_ELDY_TEXT);
 $colortextlink			 = empty($user->conf->THEME_ELDY_ENABLE_PERSONALIZED) ? (empty($conf->global->THEME_ELDY_TEXTLINK) ? $colortext : $conf->global->THEME_ELDY_TEXTLINK) : (empty($user->conf->THEME_ELDY_TEXTLINK) ? $colortextlink : $user->conf->THEME_ELDY_TEXTLINK);
+
 $fontsize				 = empty($user->conf->THEME_ELDY_ENABLE_PERSONALIZED) ? (empty($conf->global->THEME_ELDY_FONT_SIZE1) ? $fontsize : $conf->global->THEME_ELDY_FONT_SIZE1) : (empty($user->conf->THEME_ELDY_FONT_SIZE1) ? $fontsize : $user->conf->THEME_ELDY_FONT_SIZE1);
+
 $fontsizesmaller		 = empty($user->conf->THEME_ELDY_ENABLE_PERSONALIZED) ? (empty($conf->global->THEME_ELDY_FONT_SIZE2) ? $fontsize : $conf->global->THEME_ELDY_FONT_SIZE2) : (empty($user->conf->THEME_ELDY_FONT_SIZE2) ? $fontsize : $user->conf->THEME_ELDY_FONT_SIZE2);
 
 
@@ -215,6 +220,8 @@ $colortextlink			 = join(',', colorStringToArray($colortextlink));
 $nbtopmenuentries = $menumanager->showmenu('topnb');
 
 print '/*' . "\n";
+//var_dump($_SESSION['leftmenu']);
+print 'leftmenu=' . $_SESSION['leftmenu'] ."\n";
 print 'colorbackbody=' . $colorbackbody . "\n";
 print 'colorbackvmenu1=' . $colorbackvmenu1 . "\n";
 print 'colorbackhmenu1=' . $colorbackhmenu1 . "\n";
@@ -247,7 +254,7 @@ print '*/' . "\n";
 body {
 background: rgb(<?php print $colorbackbody; ?>);
 color: rgb(<?php echo $colortext; ?>);
-font-size: <?php print $fontsize ?>px;
+font-size: <?php print $fontsize ?>;
 font-family: <?php print $fontlist ?>;
 margin-top: 0;
 margin-bottom: 0;
@@ -277,7 +284,7 @@ box-shadow: none;
 }
 
 input, input.flat, textarea, textarea.flat, form.flat select, select, select.flat, .dataTables_length label select {
-font-size: <?php print $fontsize ?>px;
+font-size: <?php print $fontsize ?>;
 font-family: <?php print $fontlist ?>;
 border: 1px solid #C0C0C0;
 margin: 0px 0px 0px 0px;
@@ -361,7 +368,7 @@ background-image:none !important;
 input:-moz-placeholder { color:#ccc; }
 
 fieldset { border: 1px solid #AAAAAA !important; }
-
+.login_center.center{background-image: inherit!important;}
 
 .button, sbmtConnexion {
 font-family: <?php print $fontlist ?>;
@@ -434,10 +441,7 @@ div.floatright
 {
 float:<?php print $right; ?>;
 }
-.inline-block
-{
-display:inline-block;padding: 0.1em;
-}
+.inline-block{display:inline-block;padding: 0.1em 0.5em;}
 
 th .button {
 -moz-box-shadow: none !important;
@@ -491,9 +495,8 @@ font-weight: normal !important;
 .nounderline {
 text-decoration: none;
 }
-.cursorpointer {
-cursor: pointer;
-}
+.cursorpointer {cursor: pointer;}
+.cursormove{cursor: move;}
 .badge {
 display: inline-block;
 min-width: 10px;
@@ -627,7 +630,7 @@ min-height: 350px;
 .hideobject { display: none; }
 .minwidth50  { min-width: 50px; }
 /* rule for not too small screen only */
-@media only screen and (min-width: <?php echo round($nbtopmenuentries * $fontsize * 3.4, 0) + 7; ?>px)
+@media only screen and (min-width: <?php echo round($nbtopmenuentries * 13 * 3.4, 0) + 7; ?>px)
 {
 .minwidth100 { min-width: 100px; }
 .minwidth200 { min-width: 200px; }
@@ -790,12 +793,11 @@ min-width: 10px;
 
 #id-container {margin-top: 0px;margin-bottom: 0px;margin-left: 90px;display: block;}
 #id-top {width: 90px;display: block;overflow: hidden;height: 100%;}
-#id-left {height: 100%;position: fixed;width: 185px;display: block;overflow-y: auto;overflow-x: hidden;background: #fff;padding-top: 50px;border-right: 1px solid rgba(0,0,0,0.3);}
+#id-left {height: 100%;position: fixed;width: 185px;display: block;overflow-y: auto;overflow-x: hidden;background: #fff;padding-top:8em;border-right: 1px solid rgba(0,0,0,0.3);}
 #id-right {width: 100%;padding-bottom: 10px;padding-top: 12px;display: block;}
 
 .side-nav {
 background: #FFF;
-border-right: 1px solid rgba(0,0,0,0.3);
 border-left: 1px solid rgba(0,0,0,0.3);
 box-shadow: 3px 0 6px -2px #eee;
 
@@ -882,13 +884,9 @@ position: fixed;z-index: 150;height:100%;
 	}
 <?php } ?>
 
-div.fiche {
-margin-top: 1em;
-margin-left: 197px;
-margin-right: 16px;
-margin-bottom: 15px;
-display: block;
-}
+div.fiche {margin-top: 1em;margin-left: 220px;margin-right: 2em;margin-bottom: 1em;display: block;}
+.sidebar-collapse div.fiche {margin-left: 2em;}
+
 div.fichecenter {width: 100%;clear: both;display: flex;}
 div.fichecenterbis {margin-top: 8px;}
 div.twocolumns {display: flex;width: 100%;}
@@ -1034,7 +1032,6 @@ border-<?php print $left; ?>: 0px;
 border-<?php print $right; ?>: 0px;
 padding: 0px 0px 0px 0px;	/* t r b l */
 margin: 0px 0px 0px 0px;	/* t r b l */
-font-size: 14px;
 font-weight: normal;
 color: #000000;
 text-decoration: none;text-overflow: ellipsis;
@@ -1090,12 +1087,9 @@ font-weight: normal;padding: 0.5em 0;
 }
 li.tmenusel {background: rgb(<?php echo $colorbackhmenu1 ?>);}
 
-li.tmenusel, li.tmenu:hover {
-opacity: .50; /* show only a slight shadow */
-}
+li.tmenusel, li.tmenu:hover {opacity: .50; /* show only a slight shadow */}
 .tmenuend .tmenuleft { width: 0px; }
 .tmenuend { display: none; }
-
 div.tmenucenter
 {
 padding-left: 0px;
@@ -1114,8 +1108,50 @@ padding-bottom: 2px;
 overflow: hidden;
 text-overflow: ellipsis;
 }
-
-
+.sidebar-collapse #id-left, .sidebar-collapse .login_block {display: none;}
+.tmenusel:hover,#id-left,.login_block{display:block;}
+.dropdown-menu{display:none}
+.open .dropdown-menu{display: block;background-color: #fff;height: 100%;position: fixed;width: 182px;left: 93px;font-size: 0.8em;}
+.dropdown-menu:hover {color: #000;}
+.dropdown-menu > .user-footer {
+    background-color: #f9f9f9;
+    padding: 10px;
+}
+.dropdown-menu > .user-body, .dropdown-body {
+    padding: 15px;background-color: #FFF;
+    border-bottom: 1px solid #f4f4f4;
+    border-top: 1px solid #dddddd;
+    white-space: normal;
+}
+#topmenuloginmoreinfo-btn {
+    display: block;
+    text-aling: right;
+    color: #666;
+    cursor: pointer;
+}
+#topmenuloginmoreinfo {
+    display: none;
+    clear: both;
+}
+.dropdown-menu > .user-header {
+   background-color: #f9f9f9;
+}
+.dropdown-user-image {
+    border-radius: 50%;
+    vertical-align: middle;
+    z-index: 5;
+    height: 90px;
+    width: 90px;
+    border: 3px solid;
+        border-top-color: currentcolor;
+        border-right-color: currentcolor;
+        border-bottom-color: currentcolor;
+        border-left-color: currentcolor;
+    border-color: transparent;
+    border-color: rgba(255, 255, 255, 0.2);
+    max-width: 100%;
+    max-height: 100%;padding:1em;
+}
 div.mainmenu {
 position : relative;
 background-repeat:no-repeat;
@@ -1255,8 +1291,6 @@ margin:0 0px 0 0 !important;
 <?php } ?>
 }
 
-
-
 /* Login */
 
 .bodylogin
@@ -1358,20 +1392,17 @@ max-height: 90px;
 }
 
 div.login_block {
-
 border-left: 1px solid rgba(0,0,0,0.3);
 padding-top: 5px;
 <?php print $left; ?>: 90px;
 top: 0px;
 position: fixed;
-
-font-weight: bold;
 z-index: 10;
 text-align: center;
 vertical-align: middle;
 background: #FFF;
 width: 185px;
-height: 28px;
+height: 6em;
 }
 div.login_block table {
 display: inline;
@@ -1388,29 +1419,25 @@ div.login a:hover {
 color: #<?php echo $colortextbackvmenu; ?>;
 text-decoration:underline;
 }
-div.login_block_user, div.login_block_other { clear: both; }
-div.login_block_other { padding-top: 3px; }
-.login_block_elem {
-float: right;
-vertical-align: top;
-padding: 0px 0px 0px 4px !important;
-height: 16px;
-}
-.login_block_elem_name {
-margin-top: 5px;
-}
-.atoplogin, .atoplogin:hover {
+div.login_block_user, div.login_block_other { clear: both;height:3em;}
+div.login_block_other { padding-top: 1em;z-index: -1 !important;position: relative;}
+div.login_block_other span.fa,div.login_block_other span.fas,a#dolicalcbutton{font-size: 22px;font-weight: 900;font-family: "Font Awesome 5 Free";color: #000000;}
+a#dolicalcbutton::before {content: "\f1ec";}
+a#dolicalcbutton img{display:none;}
+.login_block_elem {float: right;vertical-align: top;height: 1em;}
+.login_block_elem_name {margin-top: 5px;}
+.fa-fw{padding: 0 0.2em 0 0;}
+/*.fa, .fas {font-weight: 600!important;}*/
+.fas.fa-arrows-alt, .fas.fa-window-close {margin: 0.3em;font-size: 1.2em;}
+.atoplogin{
 color: #<?php echo $colortextbackvmenu; ?> !important;
-font-weight: normal !important;
 }
 .alogin, .alogin:hover {
 color: #888 !important;
 font-weight: normal !important;
 font-size: <?php echo $fontsizesmaller; ?>px !important;
 }
-.alogin:hover, .atoplogin:hover {
-text-decoration:underline !important;
-}
+.alogin:hover, span.atoplogin:hover,a#dolicalcbutton:hover{color:#CCC!important}
 img.login, img.printer, img.entity {
 /* padding: 0px 0px 0px 4px; */
 /* margin: 0px 0px 0px 8px; */
@@ -1461,12 +1488,12 @@ text-overflow: ellipsis;
 .companylogo { padding-top: 4px; }
 .searchform { padding-top: 8px; }
 
-a.vmenu:link, a.vmenu:visited, a.vmenu:hover, a.vmenu:active { white-space: nowrap; font-size:<?php print $fontsize ?>px; font-family: <?php print $fontlist ?>; text-align: <?php print $left; ?>; font-weight: bold; }
-font.vmenudisabled  { font-size:<?php print $fontsize ?>px; font-family: <?php print $fontlist ?>; text-align: <?php print $left; ?>; font-weight: bold; color: #aaa; margin-left: 4px; }
+a.vmenu:link, a.vmenu:visited, a.vmenu:hover, a.vmenu:active { white-space: nowrap; font-family: <?php print $fontlist ?>; text-align: <?php print $left; ?>; }
+font.vmenudisabled  { font-size:<?php print $fontsize ?>; font-family: <?php print $fontlist ?>; text-align: <?php print $left; ?>; font-weight: bold; color: #aaa; margin-left: 4px; }
 a.vmenu:link, a.vmenu:visited { color: #<?php echo $colortextbackvmenu; ?>; }
 
-a.vsmenu:link, a.vsmenu:visited, a.vsmenu:hover, a.vsmenu:active, span.vsmenu { font-size:<?php print $fontsize ?>px; font-family: <?php print $fontlist ?>; text-align: <?php print $left; ?>; font-weight: normal; color: #202020; margin: 1px 1px 1px 8px; }
-font.vsmenudisabled { font-size:<?php print $fontsize ?>px; font-family: <?php print $fontlist ?>; text-align: <?php print $left; ?>; font-weight: normal; color: #aaa; }
+a.vsmenu:link, a.vsmenu:visited, a.vsmenu:hover, a.vsmenu:active, span.vsmenu { font-size:<?php print $fontsizesmaller ?>; font-family: <?php print $fontlist ?>; text-align: <?php print $left; ?>; font-weight: normal; color: #202020; margin: 1px 1px 1px 8px; }
+font.vsmenudisabled { font-size:<?php print $fontsize ?>; font-family: <?php print $fontlist ?>; text-align: <?php print $left; ?>; font-weight: normal; color: #aaa; }
 a.vsmenu:link, a.vsmenu:visited { color: #<?php echo $colortextbackvmenu; ?>; white-space: nowrap; }
 font.vsmenudisabledmargin { margin: 1px 1px 1px 8px; }
 
@@ -1494,7 +1521,6 @@ padding-right: 10px;
 
 div.blockvmenusearch
 {
-font-family: <?php print $fontlist ?>;
 color: #000000;
 text-align: <?php print $left; ?>;
 text-decoration: none;
@@ -1503,9 +1529,8 @@ padding-right: 1px;
 padding-top: 3px;
 padding-bottom: 3px;
 margin: 1px 0px 8px 0px;
-
-padding-bottom: 10px;
-border-bottom: 1px solid #f4f4f4;
+padding-bottom: 10px;padding-top: 10px;
+border-bottom: 1px solid #f4f4f4;border-top: 1px solid #e0e0e0;
 }
 div.blockvmenusearchphone
 {
@@ -2196,17 +2221,15 @@ border-top-color: rgb(<?php echo $colortopbordertitle1 ?>);
 border-top-style: solid;
 }
 
-table.liste th, table.noborder th {
-padding: 8px 3px 8px 3px;			/* t r b l */
+table.liste th, table.noborder th, table.nobordernopadding tr td{
+padding: 8px 1em;			/* t r b l */
 }
 
 div.noborder form, div.noborder form div {
-padding: 4px 2px 4px 3px;			/* t r b l */
+padding: 4px 3px 4px 3px;			/* t r b l */
 }
 
-table.liste td, div.noborder form div {
-padding: 8px 2px 8px 3px;			/* t r b l */
-}
+table.liste td, div.noborder form div {padding: 0.7em}
 div.liste_titre_bydiv .divsearchfield {
 padding: 2px 1px 2px 0px;			/* t r b l */
 }
@@ -2221,7 +2244,6 @@ padding: 0px 0px !important;
 }
 table.nobordernopadding tr td {
 border: 0px;
-padding: 8px 3px;
 height: 21px;
 }
 table.border tr td table.nobordernopadding tr td {
@@ -2257,7 +2279,7 @@ div.refidno  {
 padding-top: 2px;
 font-weight: normal;
 color: #444;
-font-size: <?php print $fontsize ?>px;
+font-size: <?php print $fontsize ?>;
 line-height: 21px;
 }
 div.refidno form {
@@ -2407,6 +2429,10 @@ color: #202020;
 */
 
 /* Set the color for hover lines */
+.noborder > tbody > tr:nth-child(2n+1):not(.liste_titre), .liste > tbody > tr:nth-child(2n+1):not(.liste_titre), div:not(.fichecenter):not(.fichehalfleft):not(.fichehalfright):not(.ficheaddleft) > .border > tbody > tr:nth-of-type(2n+1):not(.liste_titre), .liste > tbody > tr:nth-of-type(2n+1):not(.liste_titre), div:not(.fichecenter):not(.fichehalfleft):not(.fichehalfright):not(.ficheaddleft) .oddeven.tagtr:nth-of-type(2n+1):not(.liste_titre){
+background-color: rgb(255,255,255);}
+
+.oddeven:hover {color: #ccc;}
 .odd:hover, .impair:hover, .even:hover, .pair:hover, .even:hover, .pair:hover, table.dataTable tr.even:hover, table.dataTable tr.odd:hover, .box_pair:hover, .box_impair:hover
 {
 <?php if ($colorbacklinepairhover) { ?>
@@ -2499,7 +2525,7 @@ padding: 2px 0px 2px 0;
 width: 100%;
 }
 tr.liste_titre, tr.liste_titre_sel, form.liste_titre, form.liste_titre_sel, table.dataTable.tr{height: 40px !important;}
-div.liste_titre, tr.liste_titre, tr.liste_titre_sel, form.liste_titre, form.liste_titre_sel, table.dataTable thead tr
+tr.liste_titre_filter, div.liste_titre, tr.liste_titre, tr.liste_titre_sel, form.liste_titre, form.liste_titre_sel, table.dataTable thead tr
 {
 <?php if ($usegradient) { ?>
 	background-image: -o-linear-gradient(bottom, rgba(0,0,0,0.1) 0%, rgba(250,250,250,0.3) 100%);
@@ -2508,7 +2534,7 @@ div.liste_titre, tr.liste_titre, tr.liste_titre_sel, form.liste_titre, form.list
 	background-image: -ms-linear-gradient(bottom, rgba(0,0,0,0.1) 0%, rgba(250,250,250,0.3) 100%);
 	background-image: linear-gradient(bottom, rgba(0,0,0,0.1) 0%, rgba(250,250,250,0.3) 100%);
 <?php } else { ?>
-	background: rgb(<?php echo $colorbacktitle1; ?>);
+	background: rgb(<?php echo $colorbacktitle1; ?>)!important;
 <?php } ?>
 font-weight: <?php echo $useboldtitle ? 'bold' : 'normal'; ?>;
 
@@ -2564,9 +2590,7 @@ background: transparent;
 border: 0px;
 }
 
-.noborder tr.liste_total, .noborder tr.liste_total td, tr.liste_total, form.liste_total {
-/* background: #F0F0F0; */
-}
+.noborder tr.liste_total, .noborder tr.liste_total td, tr.liste_total, form.liste_total {height: 3em;}
 .noborder tr.liste_total td, tr.liste_total td, form.liste_total div {
 /* border-top: 1px solid #f4f4f4; */
 color: #332266;
@@ -2626,38 +2650,44 @@ border-bottom: 1px solid #AAA !important;
 /*
 *  Boxes
 */
-
+.boxtable br {margin: 0.2em 0;}
 .boxstats, .boxstats130 {
 display: inline-block;
 margin: 3px;
-padding: 3px;
-/*-moz-box-shadow: 3px 3px 4px #f4f4f4;
--webkit-box-shadow: 3px 3px 4px #f4f4f4;
+padding: 3px 0;vertical-align: super;
 box-shadow: 3px 3px 4px #f4f4f4;
-margin-bottom: 8px !important;*/
-border: 1px solid #CCC;
 text-align: center;
-border-radius: 2px;
-min-height: 42px;
-
-white-space: nowrap;
-overflow: hidden;
 text-overflow: ellipsis;
-width: 115px;
+width: 120px;
 }
-.boxstats130 {width: inherit; }
+.boxstatsindicator.thumbstat150 { width: 11em;position: relative;}
+.boxstats130 {width: inherit;height: 7em;border-radius: 2px;border: 1px solid #CCC;box-shadow: none;}
+.valignmiddle.dashboardlineindicator {
+
+    position: absolute;
+    bottom: 4px;
+
+}
+span.boxstatstext img.inline-block {
+    display: block;
+    margin: -15px auto 5px auto;
+    border: 1px solid #ccc;
+    background: #FFF;
+}
 @media only screen and (max-width: 767px)
 {
-.boxstats, .boxstats130 {
-width: 100px;
+.boxstats, .boxstats130 {width: 100px;}
 }
-}
+
 .boxstats:hover, .boxstats130:hover  {
 box-shadow: 0px 0px 8px 0px rgba(0,0,0,0.20);
 }
-span.boxstatstext {
-/* opacity: 0.9;  Disabled. This make text on top of left menu in smartphone size */
-line-height: 18px;
+span.boxstatstext {line-height: 18px;clear: right;display: block;}
+span.boxstatstext + br {width: 100%;display: block;}
+a.dashboardlineindicatorlate.dashboardlineko {position: absolute;bottom: 4px;}
+.tdboxstats.nohover.flexcontainer {display: flow-root;flex-wrap: wrap;}
+.tdboxstats.nohover.flexcontainer .boxstatsindicator.thumbstat {
+    margin: 0;
 }
 span.boxstatsindicator {
 font-size: 110%;
@@ -2686,9 +2716,11 @@ padding-right: 0px;
 padding-left: 0px;
 padding-bottom: 12px;
 }
-.valignmiddle.dashboardlineindicator {margin: 0 25% 0 auto;display: block;}
-.dashboardlineindicatorlate.dashboardlineko {margin: -21px -15% 0 auto;display: block;}
-
+.dashboardlineindicatorlate.dashboardlineko {margin: -24px 0 0 45px;display: block;background-color: #FFF;}
+span.dashboardlineindicator {margin: 0 40px 0 0;}
+a.dashboardlineindicatorlate img {margin: 0 0 0 2px;}
+ a span.dashboardlineindicator.dashboardlineok {margin: 0;}
+span.dashboardlineindicator.dashboardlineok {margin: 0;}
 tr.box_titre {
 height: 26px !important;
 
@@ -2962,7 +2994,7 @@ left: auto;
 .ui-dialog-titlebar {
 }
 .ui-dialog-content {
-font-size: <?php print $fontsize; ?>px !important;
+font-size: <?php print $fontsize; ?> !important;
 }
 
 /* ============================================================================== */
@@ -3117,22 +3149,10 @@ color: #000 !important;
 /*  Afficher/cacher                                                               */
 /* ============================================================================== */
 
-div.visible {
-display: block;
-}
-
-div.hidden {
-display: none;
-}
-
-tr.visible {
-display: block;
-}
-
-td.hidden {
-display: none;
-}
-
+div.visible {display: block;}
+div.hidden {display: none;}
+tr.visible {display: block;}
+td.hidden {display: none;}
 
 /* ============================================================================== */
 /*  Module website                                                                */
@@ -3426,7 +3446,7 @@ font-size:1em;
 }
 .ui-widget {
 font-family:<?php echo $fontlist; ?>;
-font-size:<?php echo $fontsize; ?>px;
+font-size:<?php echo $fontsize; ?>;
 }
 .ui-button { margin-left: -2px; <?php print (preg_match('/chrome/', $conf->browser->name) ? 'padding-top: 1px;' : ''); ?> }
 .ui-button-icon-only .ui-button-text { height: 8px; }
@@ -3626,16 +3646,14 @@ right:4px;
 
 .jnotify-container {
 position: fixed !important;
-<?php if (!empty($conf->global->MAIN_JQUERY_JNOTIFY_BOTTOM)) { ?>
 	top: auto !important;
 	bottom: 4px !important;
-<?php } ?>
 text-align: center;
 min-width: <?php echo $dol_optimize_smallscreen ? '200' : '480'; ?>px;
 width: auto;
 max-width: 1024px;
-padding-left: 10px !important;
-padding-right: 10px !important;
+padding-left: 1em !important;
+padding-right: 1em !important;
 }
 
 /* use or not ? */
@@ -3981,7 +3999,7 @@ background: #fff;
 min-width: .4em;
 padding-left: 6px;
 padding-right: 6px;
-font-size: <?php print $fontsize ?>px;
+font-size: <?php print $fontsize ?>;
 /* white-space: normal; */		/* Warning, enable this break the truncate feature */
 }
 .ui-btn-icon-right .ui-btn-inner {
@@ -4318,6 +4336,7 @@ max-width : 76%;
 #mainmenua_billing::after {content: 'Facturation';}
 
 .breadCrumbHolder.module {margin-left: 270px;}
+.sidebar-collapse .breadCrumbHolder.module {margin-left: 90px;}
 .breadCrumb {padding-left: 1em !important;width: 98%!important;}
 #breadCrumb ul li.first {display:none;}
 
@@ -4375,9 +4394,9 @@ border-left: none;
 }
 
 /* rule to reduce top menu - 2nd reduction */
-@media only screen and (max-width: <?php echo round($nbtopmenuentries * $fontsize * 4.5, 0) + 200; ?>px){
+@media only screen and (max-width: <?php echo round($nbtopmenuentries * 13 * 4.5, 0) + 200; ?>px){
 div.tmenucenter {
-max-width: <?php echo round($fontsize * 2); ?>px;	/* size of viewport */
+max-width: 26px;	/* size of viewport */
 text-overflow: clip;
 }
 .mainmenuaspan {
@@ -4413,8 +4432,8 @@ div.tabsAction {position: inherit!important;}
 #blockvmenubookmarks {display:none!important;}
 }
 
-#id-top .atoplogin, #photologo____thumbs_logo_web_mini_png, .userimg, img.userphoto {height: 100%;width: auto;max-height: 2em;vertical-align: bottom;}
-.boxstatsindicator {display: inline-table;}
+#id-top .atoplogin, #photologo____thumbs_logo_web_mini_png, .userimg, img.userphoto {height: 100%;width: auto;height: 2em;vertical-align: bottom;}
+.boxstatsindicator {display: inline-grid;margin: 1em 0.5em;}
 
 @media print {
 .side-nav,.hideonprint,div.tmenudiv,div#tmenu_tooltip,div.login_block,.vmenu {display: none;}
@@ -4425,7 +4444,21 @@ body {font-size:120%;color:black;background-color: #FFFFFF;}
 	body { background-color: #FFFFFF;}
 	.side-nav,.hideonprint,div.tmenudiv,div#tmenu_tooltip,div.login_block,.vmenu {display: none;}
 	#id-container, .fiche {margin:0.5em!important;}
-<?php
-}
+<?php } ?>
 
-if (is_object($db)) $db->close();
+
+/* ============================================================================== */
+/* Custom styles pages for <?php print $_SESSION['leftmenu']; ?>                  */
+/* ============================================================================== */
+
+<?php  if ($_SESSION['leftmenu'] == 'customers_bills_checks' or $_SESSION['leftmenu'] ==  'checks_bis') { ?>
+form.nocellnopadd{width: 99%;display: block;}
+form {width: 46%;display: inline-table;margin: 2em;}
+div.tabsAction {position: inherit;margin: 1em auto;text-align: center;}
+form#actionbookmark{margin: 0px;width:99%;}
+<?php } ?>
+<?php  if ($_SESSION['leftmenu'] == 'home' or $_SESSION['leftmenu'] ==  'home') { ?>
+/*div.fichecenter {width: 100%;clear: both;display: inherit;}*/
+<?php } ?>
+
+<?php  if (is_object($db)) $db->close(); ?>

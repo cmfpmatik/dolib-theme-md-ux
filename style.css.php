@@ -1111,7 +1111,7 @@ text-overflow: ellipsis;
 .sidebar-collapse #id-left, .sidebar-collapse .login_block {display: none;}
 .tmenusel:hover,#id-left,.login_block{display:block;}
 .dropdown-menu{display:none}
-.open .dropdown-menu{display: block;background-color: #fff;height: 100%;position: fixed;width: 182px;left: 93px;font-size: 0.8em;}
+.open .dropdown-menu{display: block;background-color: #fff;height: 100%;position: fixed;width: 182px;left: 93px;font-size: 0.9em;}
 .dropdown-menu:hover {color: #000;}
 .dropdown-menu > .user-footer {
     background-color: #f9f9f9;
@@ -1303,25 +1303,20 @@ padding: 10px;
 form#login {
 margin-top: <?php echo $dol_optimize_smallscreen ? '30' : '60' ?>px;
 margin-bottom: 30px;
-font-size: 13px;
+font-size: 1.4em;
 vertical-align: middle;
 }
-.login_table_title {
-max-width: 530px;
-color: #888888 !important;
-text-shadow: 1px 1px 1px #FFF;
-}
+.login_table_title {max-width: 530px;color: #CCC !important;font-size: 0;display: none;visibility: hidden;}
 .login_table label {
 text-shadow: 1px 1px 1px #FFF;
 }
 .login_table {
-margin: 0px auto;  /* Center */
+margin: 2em auto;  /* Center */
 padding-left:6px;
 padding-right:6px;
 padding-top:16px;
 padding-bottom:12px;
 max-width: 560px;
-
 background-color: #FFFFFF;
 
 -moz-box-shadow: 0 4px 23px 5px rgba(0, 0, 0, 0.2), 0 2px 6px rgba(60,60,60,0.15);
@@ -1333,15 +1328,14 @@ box-shadow: 3px 2px 20px #CCC;*/
 
 border-radius: 4px;
 border:solid 1px rgba(80,80,80,.4);
-
 border-top:solid 1px f8f8f8;
 }
 .login_table input#username, .login_table input#password, .login_table input#securitycode{
 border: none;
 border-bottom: solid 1px rgba(180,180,180,.4);
-padding: 5px;
+padding: 1em;
 margin-left: 18px;
-margin-top: 5px;
+margin-top: 1em;
 }
 .login_table input#username:focus, .login_table input#password:focus, .login_table input#securitycode:focus {
 outline: none !important;
@@ -1419,7 +1413,7 @@ div.login a:hover {
 color: #<?php echo $colortextbackvmenu; ?>;
 text-decoration:underline;
 }
-div.login_block_user, div.login_block_other { clear: both;height:3em;}
+div.login_block_other div.inline-block {margin: 0.2em 0;}
 div.login_block_other { padding-top: 1em;z-index: -1 !important;position: relative;}
 div.login_block_other span.fa,div.login_block_other span.fas,a#dolicalcbutton{font-size: 22px;font-weight: 900;font-family: "Font Awesome 5 Free";color: #000000;}
 a#dolicalcbutton::before {content: "\f1ec";}

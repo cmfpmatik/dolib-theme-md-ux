@@ -3,4 +3,4 @@ Vous pouvez fabriquer un package en utilisant le script build/makepack-dolibarrt
 
 Forum FR : https://www.dolibarr.fr/forum/511-creation-dun-nouveau-module/61688-theme-md-ux
 
-Compaible Dolibarr 14
+Compatible Dolibarr 14

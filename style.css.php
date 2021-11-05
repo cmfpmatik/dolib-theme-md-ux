@@ -4063,13 +4063,14 @@ border-left: none;
 
 @media screen and (max-width: 640px){
 	div.login_block {right: 20px;width: 107px;border: 0;left: inherit;top: 110px;}
-	.breadCrumbHolder,.login_block_user {display:none!important;}
+	#mainmenutd_companylogo, .breadCrumbHolder,.login_block_user {display:none!important;}
 	ul.tmenu {width: 100%;border-right: 1px solid rgba(0,0,0,0.3);border-left: 1px solid rgba(0,0,0,0.3);background-color: #FFF;height: 180px;}
 	.login_block_other .login_block_elem a {padding-right: 1em !important;}
-	.side-nav-vert {top: 0;position: fixed;z-index: 150;width: 100%;height: 180px;overflow: hidden;}
+	.side-nav-vert {top: 0;position: fixed;z-index: 150;width: 100%;height: 180px;overflow: hidden;max-width: 100%;}
 	#id-container {margin-top: 180px;margin-left: 0;}
 	div.tabsAction {position: inherit!important;}
 	#blockvmenubookmarks {display:none!important;}
+	ul.tmenu li {margin: 1em;width: initial!important;width: inherit;max-width: 30px;}
 }
 /* STATUS BADGES */
 

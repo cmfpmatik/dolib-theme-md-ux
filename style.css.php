@@ -777,7 +777,7 @@ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .side-nav-vert {position: fixed;z-index: 150;height:100%;background-color: rgb(248,248,248);max-width: 120px;}
 
-div.fiche {margin-top: 5em;margin-left: 220px;margin-right: 2em;margin-bottom: 1em;display: block;}
+div.fiche {margin-top: 1em;margin-left: 220px;margin-right: 2em;margin-bottom: 1em;display: block;}
 .sidebar-collapse div.fiche {margin-left: 5em;}
 
 div.fichecenter {width: 100%;clear: both;display: flex;}

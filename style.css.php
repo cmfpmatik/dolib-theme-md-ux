@@ -777,8 +777,8 @@ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .side-nav-vert {position: fixed;z-index: 150;height:100%;background-color: rgb(248,248,248);max-width: 120px;}
 
-div.fiche {margin-top: 1em;margin-left: 220px;margin-right: 2em;margin-bottom: 1em;display: block;}
-.sidebar-collapse div.fiche {margin-left: 2em;}
+div.fiche {margin-top: 5em;margin-left: 220px;margin-right: 2em;margin-bottom: 1em;display: block;}
+.sidebar-collapse div.fiche {margin-left: 5em;}
 
 div.fichecenter {width: 100%;clear: both;display: flex;}
 div.fichecenterbis {margin-top: 8px;}
@@ -1773,8 +1773,8 @@ cursor: pointer;
 border-color: #c5c5c5;
 border-color: rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.15) rgba(0, 0, 0, 0.25);
 display: inline-block;
-padding: 0.4em <?php echo ($dol_optimize_smallscreen ? '0.4' : '0.7'); ?>em;
-margin: 0.4em 1.9em !important;
+padding: 0.4em 0.7em;
+margin: 0.4em 0.9em !important;
 line-height: 20px;
 text-align: center;
 vertical-align: middle;
@@ -4055,7 +4055,6 @@ border-left: none;
 }
 
 @media screen and (max-width: 900px){
-.side-nav {position:initial;}
 .side-nav #id-left .vmenu div {display: inline-block;}
 .menu_contenu.menu_contenu_societe_soc,.menu_contenu.menu_contenu_societe_soc,#blockvmenuhelp {display:none!important;}
 #blockvmenusearch {clear: both;width: 98%;}

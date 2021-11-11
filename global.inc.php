@@ -2484,9 +2484,6 @@ div.tabsAction {
 div.tabsActionNoBottom {
     margin-bottom: 0px;
 }
-div.tabsAction > a {
-	margin-bottom: 16px !important;
-}
 
 a.tabTitle {
     color: rgba(0,0,0,0.4) !important;

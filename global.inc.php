@@ -90,23 +90,12 @@ if (!empty($conf->global->MAIN_THEME_DARKMODEENABLED)) {
 }
 ?>
 
-body {
-<?php if (GETPOST('optioncss', 'aZ09') == 'print') {  ?>
-	background-color: #FFFFFF;
-<?php } else { ?>
-	background: var(--colorbackbody);
-<?php } ?>
-	color: var(--colortext);
-	line-height: 1.4;
-}
-
 .sensiblehtmlcontent * {
 	position: static !important;
 }
 
-.thumbstat { font-weight: bold !important; }
-th a { font-weight: <?php echo ($useboldtitle ? 'bold' : 'normal'); ?> !important; }
-a.tab { font-weight: 500 !important; }
+th a, .thumbstat, a.tab { color: rgb(<?php print $colortexttitle; ?>) !important; font-weight: bold !important; }
+a.tab { font-weight: bold !important; }
 
 a:link, a:visited, a:hover, a:active { font-family: <?php print $fontlist ?>; color: var(--colortextlink); text-decoration: none;  }
 a:hover { text-decoration: underline; color: var(--colortextlink); }
@@ -117,6 +106,7 @@ tr.liste_titre th.liste_titre:not(.maxwidthsearch), tr.liste_titre td.liste_titr
 /* th.liste_titre_sel a, th.liste_titre a, td.liste_titre_sel a, td.liste_titre a { color: #766; } */
 input, input.flat, textarea, textarea.flat, form.flat select, select, select.flat, .dataTables_length label select {
 	background-color: var(--inputbackgroundcolor);
+	/*background-color: #FDFDFD;*/
 	color: var(--colortext);
 }
 select.vmenusearchselectcombo {
@@ -1782,18 +1772,6 @@ li.tmenu, li.tmenusel {
 	font-weight: normal;
 }
 
-li.tmenusel::after, li.tmenu:hover::after{
-	content: "";
-	position:absolute;
-	bottom:0px;
-	left: 50%;
-	left: calc(50% - 6px);
-	width: 0;
-	height: 0;
-	border-style: solid;
-	border-width: 0px 6px 5px 6px;
-	border-color:  transparent transparent #ffffff transparent;
-}
 
 .tmenuend .tmenuleft { width: 0px; }
 .tmenuend { display: none; }
@@ -1949,7 +1927,7 @@ a.tmenuimage:hover{
     padding:0 0 0 0 !important;
     margin:0 0px 0 0 !important;
     <?php if ($disableimages) { ?>
-    	display: none;
+    	display: none!important;
     <?php } ?>
 }
 

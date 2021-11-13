@@ -266,17 +266,6 @@ margin-left: 0;
 <?php print 'direction: ' . $langs->trans("DIRECTION") . ";\n"; ?>
 }
 
-th a, .thumbstat, a.tab { color: rgb(<?php print $colortexttitle; ?>) !important; font-weight: bold !important; }
-a.tab { font-weight: bold !important; }
-
-a:link, a:visited, a:hover, a:active { font-family: <?php print $fontlist ?>; font-weight: normal; color: rgb(<?php print $colortextlink; ?>); text-decoration: none;  }
-a:hover { text-decoration: underline; color: rgb(<?php print $colortextlink; ?>); }
-a.commonlink { color: rgb(<?php print $colortextlink; ?>) !important; text-decoration: none; }
-
-input, input.flat, textarea, textarea.flat, form.flat select, select, select.flat, .dataTables_length label select {
-background-color: #FDFDFD;
-}
-
 input:focus, textarea:focus, button:focus, select:focus {
 box-shadow: 0 0 4px #8091BF;
 /* TODO Remove shadow on focus. Use instead border-bottom: 1px solid #aaa !important; To disable with select2 too. */
@@ -1075,15 +1064,6 @@ text-overflow: ellipsis;
 	}
 // End of part to add more div class css
 	?>
-
-
-.tmenuimage {
-padding:0 0 0 0 !important;
-margin:0 0px 0 0 !important;
-<?php if ($disableimages) { ?>
-	display: none;
-<?php } ?>
-}
 
 /* Login */
 

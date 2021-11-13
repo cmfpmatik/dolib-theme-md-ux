@@ -1452,13 +1452,9 @@ div.fiche>table:first-child {
 div.fiche>table.table-fiche-title {
 	margin-bottom: 7px;
 }
-div.fichecenter {
-	width: 100%;
-	clear: both;	/* This is to have div fichecenter that are true rectangles */
-}
-div.fichecenterbis {
-	margin-top: 8px;
-}
+div.fichecenter {width: 100%;clear: both;display: flex;}
+div.fichecenterbis {margin-top: 8px;}
+
 div.fichethirdleft {
 	<?php if ($conf->browser->layout != 'phone') { print "float: ".$left.";\n"; } ?>
 	<?php if ($conf->browser->layout != 'phone') { print "width: 50%;\n"; } ?>

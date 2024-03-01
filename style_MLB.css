@@ -1,0 +1,85 @@
+/* les 3 logos d'en tête supprimé */
+.fa-bug:before {
+    display: none;
+}
+
+.fa-print:before {
+    display: none;
+}
+
+.fa-question-circle:before {
+    display: none;
+}
+.fa-long-arrow-alt-up:before {
+    display: none;
+}
+
+.fa-fw {
+    display: none;
+}
+
+.fa-bars:before {
+    display:none;
+}
+
+.fa-folder-open:before {
+    display:none;
+}
+
+span.fas.fa-calendar-alt.infobox-action.pictofixedwidth {
+    display:none;
+}
+
+ul.tmenu {
+    padding: 10px;
+}
+
+div.fichethirdleft {
+    float: left;
+    width: 40%;
+}
+
+.fa-globe-americas:before {
+    display: none;
+}
+.fa-cash-register:before {
+    display: none;
+}
+
+
+
+div.fichecenter {
+    width: 100%;    
+   
+}
+
+/* Responsive mobile  */
+
+
+ @media screen and (max-width: 800px) {
+
+    .sidebar-collapse header#id-top {
+        height: 80px;
+    }
+
+    div.fichecenter {
+        width: 100%;
+        flex-direction: column;
+    }
+
+    div.fichethirdleft {
+        width: 100%;
+    }
+
+    table.table-fiche-title .nobordernopadding.valignmiddle.right {
+        width: 100%;
+        display: block;
+    }
+
+    div.fichetwothirdright{
+
+        float: none;
+        width: inherit;
+    }
+
+} 

@@ -4392,5 +4392,10 @@ table.noborder td {padding:0!important}
 require __DIR__.'/global.inc.php';
 
 
-if (is_object($db)) $db->close(); 
+if (is_object($db)) $db->close();
+
+	/* ====================== MLB PART ============================ */
+/* =========================================================== */
+
+require __DIR__.'/style_MLB.css';
 ?>

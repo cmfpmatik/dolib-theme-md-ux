@@ -465,7 +465,7 @@ hr { border: 0; border-top: 1px solid #ccc; }
 }
 form {
     padding:0px;
-    margin:0px;
+    margin:14px;
 }
 form#addproduct {
     padding-top: 10px;
@@ -941,7 +941,7 @@ select.flat.selectlimit {
 }*/
 /* Style used for most tables */
 .div-table-responsive, .div-table-responsive-no-min {
-    overflow-x: auto;
+    /* overflow-x: auto; */
     min-height: 0.01%;
 }
 .div-table-responsive {
@@ -949,7 +949,7 @@ select.flat.selectlimit {
 }
 /* Style used for full page tables with field selector and no content after table (priority before previous for such tables) */
 div.fiche>form>div.div-table-responsive, div.fiche>form>div.div-table-responsive-no-min {
-    overflow-x: auto;
+    /*overflow-x: auto;*/
 }
 div.fiche>form>div.div-table-responsive {
     min-height: 392px;
@@ -1312,7 +1312,7 @@ td.showDragHandle {
 #id-right {	/* This must stay id-right and not be replaced with echo $right */
 	padding-top: 2em;
 	width: 100%;
-	background: var(--colorbackbody);
+	background: rgba(251, 251, 251, 0.87);
 	padding-bottom: 2em;
 	display: block;
 }
@@ -1388,16 +1388,6 @@ div.vmenu, td.vmenu {
     margin-top: 4px;
     margin-bottom: 1px;
 }
-
-/* Try responsive even not on smartphone
-#id-container {
-	width: 100%;
-}
-#id-right {
-	width: calc(100% - 200px) !important;
-}
-*/
-
 
 /* rule to reduce top menu - 3rd reduction: The menu for user is on left */
 @media only screen and (max-width: <?php echo empty($conf->global->THEME_ELDY_WITDHOFFSET_FOR_REDUC3) ? round($nbtopmenuentries * 47, 0) + 130 : $conf->global->THEME_ELDY_WITDHOFFSET_FOR_REDUC3; ?>px)	/* reduction 3 */
@@ -2734,6 +2724,7 @@ table.paddingtopbottomonly tr td {
 }
 .liste_titre_filter {
 	background: var(--colorbacktitle1) !important;
+	overflow: hidden;
 }
 table:not(.listwithfilterbefore) tr.liste_titre_filter:first-of-type td.liste_titre {
     padding-top: 5px;
@@ -2844,6 +2835,7 @@ div.pagination {
 }
 div.pagination a {
 	font-weight: normal;
+	margin: 3px;
 }
 /*div.pagination a.butAction, div.fichehalfright a.butAction {
     margin-right: 0px !important;
@@ -3157,9 +3149,10 @@ tr.liste_titre:last-child th.liste_titre, tr.liste_titre:last-child th.liste_tit
     /* border-bottom: 1px solid #ddd; */
     border-bottom: unset;
 }
-
+/*  
 div.liste_titre {
 	padding-left: 3px;
+	*/
 }
 tr.liste_titre_sel th, th.liste_titre_sel, tr.liste_titre_sel td, td.liste_titre_sel, form.liste_titre_sel div
 {
@@ -3712,10 +3705,13 @@ div.titre {color: var(--colortexttitlenotab);}
 table.table-fiche-title .col-title div.titre{
 	line-height: 40px;
 }
-.centpercent.notopnoleftnoright.table-fiche-title,.table-fiche-title tbody,.table-fiche-title tr{display:block}
+/* .centpercent.notopnoleftnoright.table-fiche-title,.table-fiche-title tbody,.table-fiche-title tr{display:block} */
 table.table-fiche-title td.center {max-width: 800px;}
-table.table-fiche-title .nobordernopadding.valignmiddle.right {width: 100%;}
-table.table-fiche-title .nobordernopadding.valignmiddle.col-title {width: 65%;}
+/** 
+table.table-fiche-title .nobordernopadding.valignmiddle.right {width: 100%;} 
+table.table-fiche-title .nobordernopadding.valignmiddle.col-title {width: 65%;}   
+*/
+
 div.backgreypublicpayment { background-color: #f0f0f0; padding: 20px; border-bottom: 1px solid #ddd; }
 .backgreypublicpayment a { color: #222 !important; }
 .poweredbypublicpayment {
@@ -5251,14 +5247,15 @@ dl.dropdown {
     background-color: var(--inputbackgroundcolor);
     box-shadow: 1px 1px 10px #aaa;
     display:none;
-    <?php echo $right; ?>:0px;						/* pop is align on right */
+    left:1px;						/* pop is align on right */
     padding: 0 0 0 0;
     position:absolute;
-    top:2px;
+    top:20px;
     list-style:none;
     max-height: 264px;
     overflow: auto;
     border-radius: 2px;
+	z-index: 999;
 }
 .dropdown dd ul li {
 	white-space: nowrap;

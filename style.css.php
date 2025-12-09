@@ -723,8 +723,8 @@ min-width: 10px;
 /* Styles de positionnement des zones                                             */
 /* ============================================================================== */
 
-#id-container {margin-top: 0px;margin-bottom: 0px;margin-left: 120px;display: block;}
-#id-top {width: 100%;display: block;overflow-y: auto;height: 100%;background-color: #fff;}
+#id-container {margin-top: 0px;margin-bottom: 0px;/* margin-left: 120px;*/ display: block;}
+#id-top {width: 100%;display: block;overflow-x: hidden;height: 100%;background-color: #fff;}
 #id-left {height: 100%;position: fixed;width: 210px;display: block;overflow-y: auto;overflow-x: hidden;background: #fff;padding-top:10em;border-right: 1px solid rgba(0,0,0,0.3);}
 
 .side-nav {
@@ -735,7 +735,7 @@ box-shadow: 3px 0 6px -2px #eee;
 color: #333;
 display: block;
 font-family: "RobotoDraft","Roboto",sans-serif;
-left: 120px;
+/* left: 120px; */
 position: fixed;
 top: 0;
 bottom: 0px;
@@ -766,8 +766,8 @@ transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .side-nav-vert {position: fixed;z-index: 150;height:100%;background-color: rgb(248,248,248);max-width: 120px;}
 
-div.fiche {margin-top:5em;margin-left:220px;margin-right:2em;margin-bottom:1em;display: block;}
-.sidebar-collapse div.fiche {margin-left: 2em;}
+/* div.fiche {/* margin-top:5em */ ;margin-left:220px; /* margin-right:2em */ ; /*margin-bottom:1em */ ; /*display: block;*/} */
+.sidebar-collapse div.fiche {/* margin-left: 2em; */}
 
 div.twocolumns {display: flex;width: 100%;}
 div.fichehalfleft, div.fichehalfright, div.fichethirdleft, div.fichetwothirdright  {
@@ -1926,6 +1926,7 @@ width:auto;
 
 table.liste, table.noborder, table.formdoc, div.noborder {
 width: 100%;
+display: ;
 /*min-width: 515px;*/
 border-collapse: separate !important;
 border-spacing: 0px;
@@ -2038,13 +2039,10 @@ div.pagination li.noborder a:hover {
 border: none;
 background-color: transparent;
 }
-div.pagination li a,
-div.pagination li span {
-	padding: 0.4em;
-}
+
 div.pagination li:first-child a,
 div.pagination li:first-child span {
-margin-left: 0;
+margin : 3px;
 border-top-left-radius: 4px;
 border-bottom-left-radius: 4px;
 }
@@ -2262,13 +2260,14 @@ color: rgb(<?php echo $colortextlink; ?>);
 .liste_titre td a.notasortlink:hover {
 background: transparent;
 }
+td {
+    overflow : hidden; 
+}
+
 tr.liste_titre td.liste_titre {		/* For last line of table headers only */
 border-bottom: 1px solid rgb(<?php echo $colortopbordertitle1 ?>);
 }
 
-div.liste_titre {
-padding-left: 3px;
-}
 tr.liste_titre_sel th, th.liste_titre_sel, tr.liste_titre_sel td, td.liste_titre_sel, form.liste_titre_sel div
 {
 font-family: <?php print $fontlist ?>;
@@ -3577,10 +3576,11 @@ padding:0px;
 margin:0px;
 padding:0px;
 }
+/*
 .dropdown ul {
 margin: -1px 0 0 0;
 text-align: left;
-}
+} */
 .dropdown dd {
 position:relative;
 }
@@ -3594,18 +3594,19 @@ cursor:pointer;
 display:inline-block;
 padding: 0 3px 2px 0;
 }
+/*
 .dropdown dd ul {
 background-color: #FFF;
 border: 1px solid #888;
 display:none;
-right:0px;						/* pop is align on right */
+right:0px;				/*changer en left : 1px;  */		/* pop is align on right */
 padding: 2px 15px 2px 5px;
 position:absolute;
-top:2px;
+top:2px;   /* 70px */
 list-style:none;
 max-height: 300px;
 overflow: auto;
-}
+} */
 .dropdown span.value {
 display:none;
 }
@@ -3988,7 +3989,7 @@ max-width : 100%;
 
 @media only screen and (max-width: 1400px){
 table.liste, table.noborder, table.formdoc, div.noborder {min-width: 350px;}
-td.nohover div.fichecenter {display:block;}
+td.nohover div.fichecenter {/*display:block*/;}
 }
 
 @media only screen and (max-width: 1010px){
@@ -4044,7 +4045,7 @@ border-left: none;
 	ul.tmenu {width: 100%;border-right: 1px solid rgba(0,0,0,0.3);border-left: 1px solid rgba(0,0,0,0.3);background-color: #FFF;height: 180px;}
 	.login_block_other .login_block_elem a {padding-right: 1em !important;}
 	.side-nav-vert {top: 0;position: fixed;z-index: 150;width: 100%;height: 180px;overflow: hidden;max-width: 100%;}
-	#id-container {margin-top: 180px;margin-left: 0;}
+	#id-container {margin-top: 180px;margin-left: 0; margin-right: 0;}
 	div.tabsAction {position: inherit!important;}
 	#blockvmenubookmarks {display:none!important;}
 	ul.tmenu li {margin: 1em;width: initial!important;width: inherit;max-width: 30px;}
@@ -4397,5 +4398,5 @@ if (is_object($db)) $db->close();
 	/* ====================== MLB PART ============================ */
 /* =========================================================== */
 
-require __DIR__.'/style_MLB.css';
+require __DIR__.'/style.css';
 ?>

@@ -454,8 +454,8 @@ min-width: 10px;
 /* Styles de positionnement des zones                                             */
 /* ============================================================================== */
 
-#id-container {margin-top: 0px;margin-bottom: 0px;margin-left: 120px;display: block;}
-#id-top {width: 100%;display: block;overflow-y: auto;height: 100%;background-color: #fff;}
+#id-container {margin-top: 0px;margin-bottom: 0px;margin-left: 340px;display: block;}
+#id-top {width: 100%;display: block;/*overflow-y: auto*/;height: 100%;background-color: #fff;}
 #id-left {height: 100%;position: fixed;width: 210px;display: block;overflow-y: auto;overflow-x: hidden;background: #fff;padding-top:10em;border-right: 1px solid rgba(0,0,0,0.3);}
 
 .side-nav {
@@ -495,7 +495,7 @@ transition-property: transform;
 transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 -webkit-overflow-scrolling: touch;
 }
-.side-nav-vert {position: fixed;z-index: 150;height:100%;background-color: rgb(248,248,248);max-width: 120px;}
+.side-nav-vert {position: fixed;z-index: 150;height:100%;background-color: rgb(248,248,248);max-width: 110px;}
 
 /*div.fiche {margin-top:5em;margin-left:220px;margin-right:2em;margin-bottom:1em;display: block;}*/
 .sidebar-collapse div.fiche {margin-left: 2em;}
@@ -776,8 +776,12 @@ white-space:nowrap;
 font-weight: bold;
 float: right;
 }
+/* Classe creer */
+.login_block_tools {
+margin: 25px;
+}
 div.login_block_other div.inline-block {margin: 0.2em 0;}
-div.login_block_other { padding-top: 1em;z-index: -1 !important;position: relative;}
+ div.login_block_other /*{ padding-top: 1em;z-index: -1 !important;position: relative;*/{margin-top: -78px;} 
 div.login_block_other span.fa,div.login_block_other span.fas,a#dolicalcbutton{font-size: 22px;font-weight: 900;font-family: "Font Awesome 5 Free";color: #000000;}
 a#dolicalcbutton::before {content: "\f1ec";}
 a#dolicalcbutton img{display:none;}
@@ -1506,3 +1510,18 @@ span.dashboardlineindicator {margin: 0 40px 0 0;}
 a.dashboardlineindicatorlate img {margin: 0 0 0 2px;}
  a span.dashboardlineindicator.dashboardlineok {margin: 0;}
 span.dashboardlineindicator.dashboardlineok {margin: 0;}
+
+
+a.custom-nav-shortcut:nth-child(1) {
+margin: 20px;
+}
+a.custom-nav-shortcut:nth-child(2) {
+  margin: 20px;
+}
+a.custom-nav-shortcut:nth-child(3) {
+  margin: 20px;
+}
+
+.sidebar-collapse #id-container {
+margin-left: 140px;
+}

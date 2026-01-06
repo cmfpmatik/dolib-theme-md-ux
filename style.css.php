@@ -37,7 +37,7 @@ if (!defined('NOLOGIN'))
 //if (! defined('NOREQUIREMENU'))   define('NOREQUIREMENU',1);  // We need top menu content
 if (!defined('NOREQUIREHTML')) define('NOREQUIREHTML', 1);
 if (!defined('NOREQUIREAJAX')) define('NOREQUIREAJAX', '1');
-
+define('ALLOW_THEME_JS', '1');
 define('ISLOADEDBYSTEELSHEET', '1');
 
 session_cache_limiter(FALSE);
@@ -52,6 +52,9 @@ require_once DOL_DOCUMENT_ROOT . '/core/lib/functions2.lib.php';
 if (empty($user->id) && !empty($_SESSION['dol_login'])) $user->fetch('', $_SESSION['dol_login']);
 
 // Load new boxes
+
+// Load JS files required by theme
+require_once '\dolibarr\www\dolibarr\htdocs\theme\md-ux\set_allow_theme_js.php';
 
 // Define css type
 header('Content-type: text/css');
@@ -723,151 +726,7 @@ min-width: 10px;
 /* Styles de positionnement des zones                                             */
 /* ============================================================================== */
 
-#id-container {margin-top: 0px;margin-bottom: 0px;/* margin-left: 120px;*/ display: block;}
-#id-top {width: 100%;display: block;overflow-x: hidden;height: 100%;background-color: #fff;}
-#id-left {height: 100%;position: fixed;width: 210px;display: block;overflow-y: auto;overflow-x: hidden;background: #fff;padding-top:10em;border-right: 1px solid rgba(0,0,0,0.3);}
 
-.side-nav {
-background: #FFF;
-border-left: 1px solid rgba(0,0,0,0.3);
-box-shadow: 3px 0 6px -2px #eee;
-
-color: #333;
-display: block;
-font-family: "RobotoDraft","Roboto",sans-serif;
-/* left: 120px; */
-position: fixed;
-top: 0;
-bottom: 0px;
-z-index: 90;
--webkit-transform: translateZ(0);
--moz-transform: translateZ(0);
--ms-transform: translateZ(0);
--o-transform: translateZ(0);
-transform: translateZ(0);
--webkit-transform-style: preserve-3d;
--moz-transform-style: preserve-3d;
--ms-transform-style: preserve-3d;
--o-transform-style: preserve-3d;
-transform-style: preserve-3d;
--webkit-transition-delay: 0.1s;
--moz-transition-delay: 0.1s;
-transition-delay: 0.1s;
--webkit-transition-duration: 0.2s;
--moz-transition-duration: 0.2s;
-transition-duration: 0.2s;
--webkit-transition-property: -webkit-transform;
--moz-transition-property: -moz-transform;
-transition-property: transform;
--webkit-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
--moz-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
--webkit-overflow-scrolling: touch;
-}
-.side-nav-vert {position: fixed;z-index: 150;height:100%;background-color: rgb(248,248,248);max-width: 120px;}
-
-/* div.fiche {/* margin-top:5em */ ;margin-left:220px; /* margin-right:2em */ ; /*margin-bottom:1em */ ; /*display: block;*/} */
-.sidebar-collapse div.fiche {/* margin-left: 2em; */}
-
-div.twocolumns {display: flex;width: 100%;}
-div.fichehalfleft, div.fichehalfright, div.fichethirdleft, div.fichetwothirdright  {
-width: 48%;
-margin: 1% auto;
-display: block;
-}
-
-/* For table into table into card */
-div.ficheaddleft tr.liste_titre:first-child td table.nobordernopadding td, div.nopadding {
-padding: 0 0 0 0;
-}
-div.nopadding {
-padding: 0 !important;
-}
-
-.containercenter {
-display : table;
-margin : 0px auto;
-}
-
-#pictotitle {
-margin-right: 8px;
-margin-bottom: 4px;
-}
-.pictoobjectwidth {
-width: 14px;
-}
-.pictosubstatus {
-padding-left: 2px;
-padding-right: 2px;
-}
-.pictostatus {
-width: 15px;
-vertical-align: middle;
-margin-top: -3px
-}
-.pictowarning, .pictopreview {
-padding-left: 3px;
-}
-.colorthumb {
-padding-left: 1px !important;
-padding-right: 1px;
-padding-top: 1px;
-padding-bottom: 1px;
-width: 44px;
-}
-div.attacharea {
-padding-top: 10px;
-padding-bottom: 10px;
-}
-div.arearef {
-padding-top: 2px;
-padding-bottom: 5px;
-margin-bottom: 10px;
-}
-div.arearefnobottom {
-padding-top: 2px;
-padding-bottom: 4px;
-}
-div.heightref {
-min-height: 80px;
-}
-div.divphotoref {
-padding-right: 20px;
-}
-div.statusref {
-float: right;
-padding-left: 12px;
-margin-top: 8px;
-margin-bottom: 10px;
-clear: both;
-}
-img.photoref, div.photoref {
-border: 1px solid #CCC;
--moz-box-shadow: 3px 3px 4px #DDD;
--webkit-box-shadow: 3px 3px 4px #DDD;
-box-shadow: 3px 3px 4px #DDD;
-padding: 4px;
-height: 80px;
-width: 80px;
-object-fit: contain;
-}
-img.fitcontain {
-object-fit: contain;
-}
-div.photoref {
-display:table-cell;
-vertical-align:middle;
-text-align:center;
-}
-img.photorefnoborder {
-padding: 2px;
-height: 48px;
-width: 48px;
-object-fit: contain;
-border: 1px solid #CCC;
-}
-.underrefbanner {
-}
 .underbanner {
 border-bottom: <?php echo $borderwith; ?>px solid rgb(<?php echo $colortopbordertitle1 ?>);
 }
@@ -973,8 +832,9 @@ padding-bottom: 2px;
 overflow: hidden;
 text-overflow: ellipsis;
 }
+/*
 .sidebar-collapse #id-left, .sidebar-collapse .login_block {display: none;}
-.tmenusel:hover,#id-left,.login_block{display:block;}
+.tmenusel:hover,#id-left,.login_block{/* display:block; */} */
 .dropdown-menu{display:none}
 .open .dropdown-menu{display: block;background-color: #fff;height: 100%;position: fixed;width: 182px;left: 93px;font-size: 0.9em;}
 .dropdown-menu:hover {color: #000;}
@@ -1186,7 +1046,7 @@ color: #<?php echo $colortextbackvmenu; ?>;
 text-decoration:underline;
 }
 div.login_block_other div.inline-block {margin: 0.2em 0;}
-div.login_block_other { padding-top: 1em;z-index: -1 !important;position: relative;}
+/ * div.login_block_other { padding-top: 1em;z-index: -1 !important;position: relative;} */
 div.login_block_other span.fa,div.login_block_other span.fas,a#dolicalcbutton{font-size: 22px;font-weight: 900;font-family: "Font Awesome 5 Free";color: #000000;}
 a#dolicalcbutton::before {content: "\f1ec";}
 a#dolicalcbutton img{display:none;}
@@ -1601,7 +1461,7 @@ text-align: <?php print $left; ?>;
 margin-left: 6px !important;
 margin-right: 6px !important;
 clear:both;
-height:100%;
+/*height: 100%;*/
 }
 div.tabsElem { margin-top: 6px; }		/* To avoid overlap of tabs when not browser */
 
@@ -4045,7 +3905,7 @@ border-left: none;
 	ul.tmenu {width: 100%;border-right: 1px solid rgba(0,0,0,0.3);border-left: 1px solid rgba(0,0,0,0.3);background-color: #FFF;height: 180px;}
 	.login_block_other .login_block_elem a {padding-right: 1em !important;}
 	.side-nav-vert {top: 0;position: fixed;z-index: 150;width: 100%;height: 180px;overflow: hidden;max-width: 100%;}
-	#id-container {margin-top: 180px;margin-left: 0; margin-right: 0;}
+	    /* #id-container {margin-top: 180px;margin-left: 340px; margin-right: 0;}  */
 	div.tabsAction {position: inherit!important;}
 	#blockvmenubookmarks {display:none!important;}
 	ul.tmenu li {margin: 1em;width: initial!important;width: inherit;max-width: 30px;}

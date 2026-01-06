@@ -1311,7 +1311,7 @@ td.showDragHandle {
 
 #id-right {	/* This must stay id-right and not be replaced with echo $right */
 	padding-top: 2em;
-	width: 100%;
+	width: 98%;
 	background: rgba(251, 251, 251, 0.87);
 	padding-bottom: 2em;
 	display: block;
@@ -1405,6 +1405,7 @@ body.sidebar-collapse .login_block {
 
 #id-container {
 	width: 100%;
+	
 }
 .side-nav {
 	border-bottom: 1px solid #BBB;
@@ -2376,7 +2377,7 @@ div.tabs {
     padding-left: 6px;
     padding-right: 6px;
 	clear:both;
-	height:100%;
+	
 }
 div.tabsElem {
 	margin-top: 1px;

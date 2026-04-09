@@ -1,18 +1,76 @@
-# theme-dolibarr-md-ux
-Vous pouvez fabriquer un package en utilisant le script build/makepack-dolibarrtheme.pl ou en copiant les fichiers dans un dossier /htdocs/theme/md-ux/
+#🎨 Theme MD-UX pour Dolibarr
+
+MD-UX est un thème ergonomique pour Dolibarr ERP/CRM, conçu pour offrir une expérience utilisateur (UX) moderne, fluide et entièrement responsive. Basé sur les principes du Material Design, il transforme l'interface classique de Dolibarr pour la rendre plus claire et agréable au quotidien.
+✨ Points forts
+
+    📱 100% Responsive : Une navigation optimisée pour tablettes et smartphones.
+
+    🚀 Interface Épurée : Moins d'encombrement visuel pour se concentrer sur l'essentiel.
+
+    🖌️ Design Moderne : Inspiré par le Material Design (icônes, espacements, typographies).
+
+    ⚖️ Libre & Gratuit : Un projet communautaire pour améliorer l'écosystème Dolibarr.
+
+📸 Aperçu
+
+    [Insérez ici une capture d'écran de votre tableau de bord avec le thème MD-UX]
+
+🛠 Installation
+Méthode 1 : Installation manuelle (Recommandée)
+
+    Téléchargez l'archive ZIP depuis GitHub.
+
+    Décompressez l'archive sur votre ordinateur.
+
+    Renommez le dossier extrait (ex: dolib-theme-md-ux-master) en md-ux.
+
+    Transférez ce dossier md-ux dans le répertoire des thèmes de votre installation Dolibarr :
+
+    htdocs/theme/
+
+    Activez le thème :
+
+        Connectez-vous à Dolibarr.
+
+        Allez dans Accueil > Configuration > Affichage.
+
+        Sélectionnez le thème md-ux et enregistrez.
+
+
+
+⚙️ Compatibilité
+
+Le thème est activement testé et maintenu pour les versions suivantes :
+
+    Dolibarr v14 à v20+
+
+🤝 Contribuer
+
+Les contributions sont les bienvenues ! Si vous souhaitez améliorer le CSS, corriger un bug sur mobile ou proposer une nouvelle fonctionnalité :
+
+    Forkez le projet.
+
+    Créez votre branche de fonctionnalité (git checkout -b feature/AmazingFeature).
+
+    Commitez vos changements (git commit -m 'Add some AmazingFeature').
+
+    Pushez sur la branche (git push origin feature/AmazingFeature).
+
+    Ouvrez une Pull Request.
+
+💬 Support & Communauté
+
+    Forum Dolibarr : Retrouvez le fil de discussion dédié sur le forum officiel.
+
+    Issues : Pour rapporter un bug, utilisez l'onglet Issues de GitHub.
+    
 
 Forum FR : https://www.dolibarr.fr/forum/t/theme-md-ux-libre-et-responsive/27346
 
-Via le dolistore: https://www.dolistore.com/product.php?id=1263&title=mdux&l=fr
-Compatible Dolibarr 14 à 20
+Via le dolistore: https://www.dolistore.com/product.php?id=1263&title=mdux&l=fr 
 
-_
+📜 Licence
 
-Pour un télchargement en direct de GitHub : 
+Distribué sous licence GPL-3.0. Voir le fichier LICENSE pour plus d'informations.
 
-
-1 - Telecharger en fichier Zip
-
-2 - Renommer le dossier "theme-dolibarr-md-ux-master" en "md-ux"
-
-3 - Charger le dossier "md-ux" sur votre instance Dolibarr dans le dossier htdocs/theme
+Développé avec ❤️ par cmfpmatik et la communauté Dolibarr.

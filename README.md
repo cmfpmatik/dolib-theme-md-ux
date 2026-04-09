@@ -13,7 +13,9 @@ MD-UX est un thème ergonomique pour Dolibarr ERP/CRM, conçu pour offrir une ex
 
 📸 Aperçu
 
-    [Insérez ici une capture d'écran de votre tableau de bord avec le thème MD-UX]
+![c9421d20191019034619-image_5](https://github.com/user-attachments/assets/05950d52-699e-4e0a-a60a-95e10f2349d6)
+![c9421d20191019034619-image_4](https://github.com/user-attachments/assets/51c8c369-4ac7-450f-9f01-aac39b1b41ca)
+
 
 🛠 Installation
 Méthode 1 : Installation manuelle (Recommandée)

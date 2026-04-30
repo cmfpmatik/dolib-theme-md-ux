@@ -59,7 +59,7 @@ div.fichecenter {
 body {
     background: rgb(var(--color-back-body));
     color: var(--colortext);
-    line-height: 1.4;
+    line-height:normal;
     font-size: var(--font-size-base);
     font-family: var(--font-family-base);
     margin: 0;
@@ -126,7 +126,7 @@ span.timesheetalreadyrecorded input {
 
 .optiongrey,
 .opacitymedium {
-    opacity: 0.5;
+    opacity: initial;
 }
 
 .opacityhigh {
@@ -1738,17 +1738,24 @@ span.tabspan {
 /* Prepared to remove class pair - impair */
 .noborder > tbody > tr:nth-child(even) td,
 .even, .pair {
-    font-family: var(--font-family-base);
+    font-family:serif;
     color: #202020;
     background-color: #FAFAFA;
+    text-align: center;
 }
 
 .noborder > tbody > tr:nth-child(odd) td,
 .odd, .impair, #GanttChartDIV {
-    font-family: var(--font-family-base);
+    font-family: serif;
     color: #202020;
     background-color: #F0F0F0;
+    text-align: center;
 }
+
+.noborder tr:last-child td:last-child{
+    text-align: center; 
+}
+
 
 /* Application du fond gris sur les lignes impaires (si non titre) */
 .noborder > tbody > tr:nth-child(2n+1):not(.liste_titre),
@@ -1765,6 +1772,7 @@ div:not(.fichecenter) .oddeven.tagtr:nth-of-type(2n+1):not(.liste_titre) {
 .odd:hover, .impair:hover, .even:hover, .pair:hover,
 table.dataTable tr:hover, .box_pair:hover, .box_impair:hover {
     background: rgb(238, 246, 252) !important;
+    text-align: center;
 }
 
 /* --- Cas spécifiques "No Hover" --- */
@@ -1787,11 +1795,10 @@ tr.liste_titre_filter, div.liste_titre,
 tr.liste_titre, tr.liste_titre_sel,
 form.liste_titre, form.liste_titre_sel,
 table.dataTable thead tr {
-    background: rgb(230, 230, 230) !important;
+    background:rgb(196, 192, 192) !important;
     font-weight: bold;
     color: rgb(20, 20, 20);
     border-bottom: 1px solid #FDFFFF;
-    text-align: left;
 }
 
 /* Cellules de titres */
@@ -1801,6 +1808,7 @@ form.liste_titre div, div.liste_titre {
     font-weight: bold;
     vertical-align: middle;
     border-bottom: 1px solid #FDFFFF;
+    font-size: large;
 }
 
 /* Liens dans les titres */
@@ -1808,6 +1816,8 @@ form.liste_titre div, div.liste_titre {
     text-shadow: none !important;
     color: rgb(20, 20, 20);
     text-decoration: none;
+    margin: inherit;
+    width: 10px;
 }
 
 .liste_titre a.notasortlink { color: rgb(0, 0, 120); }
@@ -1855,7 +1865,7 @@ tr.liste_sub_total td {
 }
 
 .paymenttable td:first-child, .margintable td:first-child {
-    padding-left: 2px;
+    padding-left: 10px;
 }
 
 td { overflow: hidden; }
@@ -1913,6 +1923,7 @@ div.noborder {
     border-bottom: 1px solid #BBB;
     margin: 0 0 8px 0;
     border-radius: 0.1em;
+    padding: 7px 8px 7px 8px;
 }
 
 /* Titres additionnels */
@@ -2128,15 +2139,16 @@ td.legendColorBox, td.legendLabel { padding: 2px 2px 2px 0 !important; }
 .nographyet { 
     content: url(img/nographyet.svg); 
     display: inline-block; 
-    opacity: 0.1; 
+    opacity: 0.4; 
 }
-.nographyettext { opacity: 0.5; }
+.nographyettext { opacity: initial; }
 
 /* --- Titres de blocs --- */
 div.titre {
     font-family: var(--font-family-base);
     font-weight: bold;
     color: rgb(90, 90, 90);
+    text-align: center !important;
 }
 
 @media only screen and (max-width: 767px) {
@@ -2607,3 +2619,61 @@ ul.cal_event {
     padding: 2px; height: 18px; cursor: pointer;
 }
 .ui-autocomplete ul li.selected { background-color: #D3E5EC; }
+
+.fa-plus-circle:before {
+    content: "\f055";
+    font-size: large;
+}
+
+span#select2-boxbookmark-container, span#select2-boxcombo-container {
+    text-align: left;
+    opacity: 8;
+}
+
+.amountpaymentneutral {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 9px;
+}
+
+.width75 {
+    width: 95px;
+    white-space: nowrap;
+} 
+
+/* Premier et dernier élément (Arrondis) */
+div.pagination li:first-child a, div.pagination li:first-child span {
+    margin: 7px;
+    border-radius: 4px 0 0 4px;
+}
+
+.noborder > tbody > tr:nth-child(odd):not(:last-child) td:not(.liste_titre), .liste > tbody > tr:nth-child(odd):not(:last-child) td:not(.liste_titre), .noborder .oddeven.tagtr:nth-child(odd):not(:last-child) .tagtd:not(.liste_titre) {
+    border-bottom: 1px solid #e0e0e0;
+    font-family: arial;
+    text-align: left;
+}
+
+.noborder > tbody > tr:nth-child(odd):not(:last-child) td:not(.liste_titre), .liste > tbody > tr:nth-child(odd):not(:last-child) td:not(.liste_titre), .noborder .oddeven.tagtr:nth-child(odd):not(:last-child) .tagtd:not(.liste_titre) {
+    border-bottom: 1px solid #e0e0e0;
+    font-family: serif;
+    text-align: center;
+}
+
+td.nobordernopadding.widthpictotitle.col-picto {
+    color: #8d5625;
+    opacity: 0.85;
+}
+
+tr.oddeven.nohover td {
+    text-align: left!important;
+}
+
+tr.liste_titre td {
+    text-align: left !important;
+    font-family: arial !important;
+}
+
+.opacityhigh {
+    opacity: 0.2;
+    margin: 6px;
+}
